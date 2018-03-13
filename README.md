@@ -2,11 +2,11 @@
 
 # Stack
 
--- brocollijs
--- firebase
----- database
----- hosting
--- JS
--- css
----- sass
--- HTML
+* -- brocollijs
+* -- firebase
+* ---- database
+* ---- hosting
+* -- JS
+* -- css
+* ---- sass
+* -- HTML
