@@ -4,9 +4,9 @@
 
 - brocollijs
 - firebase
- - database
- - hosting
+  - database
+  - hosting
 - JS
 - css
- - sass
+  - sass
 - HTML
