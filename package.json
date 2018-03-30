@@ -1,9 +1,16 @@
 {
-    "scripts": {
-        "clean": "rm -rf dist",
-        "build": "broccoli build dist",
-        "serve": "broccoli serve",
-        "sass_watch": "",
-        "build-serve": "npm run clean && npm run build && npm run serve"
-    }
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "broccoli build dist",
+    "serve": "broccoli serve",
+    "sass_watch": "",
+    "build-serve": "npm run clean && npm run build && npm run serve"
+  },
+  "devDependencies": {
+    "broccoli-babel-transpiler": "^6.1.4",
+    "broccoli-funnel": "^2.0.1",
+    "broccoli-livereload": "^1.2.1",
+    "broccoli-merge-trees": "^3.0.0",
+    "broccoli-sass-source-maps": "2.2.0"
+  }
 }
