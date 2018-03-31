@@ -1,9 +1,33 @@
-const Funnel = require('broccoli-funnel')
-const esTranspiler = require('broccoli-babel-transpiler')
-const mergeTrees = require('broccoli-merge-trees')
-
-const tree = new Funnel('app', {
-  destDir: ''
+const funnel = require('broccoli-funnel')
+const html = funnel('app', {
+  files: ['index.html'],
+  destDir: '/'
 })
 
-module.exports =  tree;
+const Rollup = require('broccoli-rollup')
+let js = new Rollup('app', {
+  rollup: {
+    input: 'app.js',
+    output: {
+      file: 'app.js',
+      format: 'es',
+    }
+  }
+})
+
+var compileSass = require('broccoli-sass')
+const css = compileSass(
+  ['app'],
+  '/app.scss',
+  '/app.css'
+)
+
+const mergeTrees = require('broccoli-merge-trees')
+const tree = mergeTrees([html, js, css])
+
+const LiveReload = require('broccoli-livereload')
+const isAlive = new LiveReload(tree, {
+  target: 'index.html'
+})
+
+module.exports = isAlive

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "broccoli serve",
-    "build": "rd /S /Q dist && broccoli build dist"
+    "build": "rm -rf dist && broccoli build dist",
+    "deploy:dev": "npm run build && npm run serve"
   },
   "repository": {
     "type": "git",
@@ -20,9 +21,14 @@
   "homepage": "https://github.com/afmeva/trello-clone-vanilla#readme",
   "devDependencies": {
     "broccoli": "^1.1.4",
-    "broccoli-babel-transpiler": "^6.1.4",
     "broccoli-cli": "^1.0.0",
     "broccoli-funnel": "^2.0.1",
-    "broccoli-merge-trees": "^3.0.0"
-  }
+    "broccoli-livereload": "^1.2.1",
+    "broccoli-merge-trees": "^3.0.0",
+    "broccoli-rollup": "^2.0.0",
+    "broccoli-sass": "^0.7.0",
+    "rollup-cli": "^1.0.9",
+    "rollup-plugin-scss": "^0.4.0"
+  },
+  "dependencies": {}
 }
