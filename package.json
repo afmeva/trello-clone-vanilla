@@ -1,0 +1,32 @@
+{
+  "name": "trello-clone-vanilla",
+  "version": "1.0.0",
+  "description": "- brocollijs\r - firebase\r   - database\r   - hosting\r - JS\r - css\r   - sass\r - HTML",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "broccoli serve",
+    "build": "rm -rf dist && broccoli build dist",
+    "deploy:dev": "npm run build && npm run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afmeva/trello-clone-vanilla.git"
+  },
+  "author": "DL AM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afmeva/trello-clone-vanilla/issues"
+  },
+  "homepage": "https://github.com/afmeva/trello-clone-vanilla#readme",
+  "devDependencies": {
+    "broccoli": "^1.1.4",
+    "broccoli-cli": "^1.0.0",
+    "broccoli-funnel": "^2.0.1",
+    "broccoli-livereload": "^1.2.1",
+    "broccoli-merge-trees": "^3.0.0",
+    "broccoli-rollup": "^2.0.0",
+    "broccoli-sass": "^0.7.0"
+  },
+  "dependencies": {}
+}
