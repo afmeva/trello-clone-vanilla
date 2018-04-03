@@ -1,4 +1,5 @@
 import { div, p, input, button, createRootNode } from './core/virtual-dom'
+
 const withState = component => state => {
   const componentWithState = Object.assign({}, component, {
     update() {
@@ -18,28 +19,26 @@ const ribbon = (value, ...children) => (
 )
 
 const form = (state = {}) => {
-  const { title, value } = state
+  const { title, value = 0 } = state
   return div({ className: 'myDiv' },
-    p('title'),
-    button({
-      className: 'mybutton',
-      onclick: (e) => {
-        console.log('clicking');
-
+    input({
+      value: model.getState().value,
+      onchange({ target }) {
         model.do({
           type: 'UPDATE_VALUE',
-          value: 3
+          value: Number(target.value) + 1
         })
       }
-    }, 'click me'),
-    ribbon(1,
-      ribbon(2),
-      div({ className: 'lala' },
-        div('lolazo'),
-        div('lolazo' + title),
-        ribbon(3)
-      )
-    )
+    }),
+    div('my current number:' + model.getState().value),
+    button({
+      onclick() {
+        model.do({
+          type: 'UPDATE_VALUE',
+          value: model.getState().value + 1
+        })
+      }
+    }, 'Click me')
   )
 }
 
@@ -47,7 +46,7 @@ let reducers = {
   title: (action, state = 'default title') => {
     return state
   },
-  value: (action, state = 0) => {
+  value: (action, state = 25) => {
     switch (action.type) {
       case 'UPDATE_VALUE':
         return action.value
@@ -78,7 +77,7 @@ const createModel = reducers => {
 }
 
 const rootApp = (view, model) => {
-  rootNode = createRootNode(view, document.body)
+  rootNode = createRootNode(view, document.querySelector('.app'))
   model.onChange(rootNode.update)
 
   model.do({

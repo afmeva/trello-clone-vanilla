@@ -20,23 +20,37 @@ const createElement = (vNode) => {
     }, newNode)
 }
 const areNodesDifferent = (parentNode, oldVNode, newVNode, index = 0) => {
-  console.log(oldVNode, newVNode)
-  if (oldVNode.tag !== newVNode.tag) {
-    parentNode.replaceChild(
-      createElement(newVNode),
-      parentNode.childNodes[index])
-  } else if (oldVNode.text !== newVNode.text) {
+  if (!oldVNode) {
+    parentNode.appendChild(createElement(newVNode))
+    return;
+  }
+
+  if (!newVNode) {
+    parentNode.removeChild(createElement(newVNode))
+    return;
+  }
+
+  if ((oldVNode.tag !== newVNode.tag) ||
+    (oldVNode.text !== newVNode.text)) {
     parentNode.replaceChild(
       createElement(newVNode),
       parentNode.childNodes[index])
   }
+
+  // if(nodesAreDifferent(oldNode, newNode)) {
+  //   updateNodes(parentNode, oldNode, newNode)
+  // }
+
+  // const nodesAreDifferent = (oldNode, newNode) => {
+  //   return oldVNode.tag !== newVNode.tag
+  // }
 
   const oldLength = oldVNode.children.length
   const newLength = newVNode.children.length
 
   for (let i = 0; i < newLength || i < oldLength; i++) {
     areNodesDifferent(
-      parentNode,
+      parentNode.childNodes[index],
       oldVNode.children[i],
       newVNode.children[i],
       i
@@ -44,13 +58,12 @@ const areNodesDifferent = (parentNode, oldVNode, newVNode, index = 0) => {
   }
 }
 const createRootNode = (vNode, targetNode) => {
-  let currentHTML = vNode()
-  const html = createElement(vNode({}))
-  targetNode.appendChild(html)
+  let currentHTML = null;
   return {
     update: (state = {}) => {
-      areNodesDifferent(html, currentHTML, vNode(state))
-      currentHTML = vNode(state)
+      const newHtml = vNode(state)
+      areNodesDifferent(targetNode, currentHTML, newHtml)
+      currentHTML = newHtml
     }
   }
 }
@@ -83,5 +96,7 @@ const div = createVirtualElement('div')
 const p = createVirtualElement('p')
 const input = createVirtualElement('input')
 const button = createVirtualElement('button')
+const h1 = createVirtualElement('h1')
 
-export { div, p, input, button, createRootNode }
+export { div, p, input, button, h1, createRootNode }
+
