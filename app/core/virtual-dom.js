@@ -19,7 +19,41 @@ const createElement = (vNode) => {
       return acc;
     }, newNode)
 }
-const areNodesDifferent = (parentNode, oldVNode, newVNode, index = 0) => {
+
+const areAttrsDifferent = (oldVNode, newVNode) => {
+  let areDifferent = false;
+  if (oldVNode.attrs.length !== newVNode.attrs.length) {
+    areDifferent = true
+  }
+
+  const oAttrsArray = Object.entries(oldVNode.attrs)
+  const nAttrsArray = Object.entries(newVNode.attrs)
+  const oldLength = oAttrsArray.length
+  const newLength = nAttrsArray.length
+  for (let i = 0; i < newLength || i < oldLength; i++) {
+    const [oAttr, oAttrValue] = oAttrsArray[i]
+    const [nAttr, nAttrValue] = nAttrsArray[i]
+
+    // this need further testing. Could callback change in runtime?
+    if ((typeof oAttrValue === 'function') && (typeof oAttrValue === 'function')) {
+      continue
+    }
+
+    if ((oAttr !== nAttr) || (oAttrValue !== nAttrValue)) {
+      areDifferent = true
+      break
+    }
+  }
+
+  return areDifferent
+}
+
+const areNodesDifferent = () => {
+  return (oldVNode.tag !== newVNode.tag) ||
+    (oldVNode.text !== newVNode.text)
+}
+
+const difftingDOM = (parentNode, oldVNode, newVNode, index = 0) => {
   if (!oldVNode) {
     parentNode.appendChild(createElement(newVNode))
     return;
@@ -30,26 +64,19 @@ const areNodesDifferent = (parentNode, oldVNode, newVNode, index = 0) => {
     return;
   }
 
-  if ((oldVNode.tag !== newVNode.tag) ||
-    (oldVNode.text !== newVNode.text)) {
+  if (areNodesDifferent(oldNode, newNode) ||
+    areAttrsDifferent(oldVNode, newVNode)) {
     parentNode.replaceChild(
       createElement(newVNode),
       parentNode.childNodes[index])
+    return;
   }
-
-  // if(nodesAreDifferent(oldNode, newNode)) {
-  //   updateNodes(parentNode, oldNode, newNode)
-  // }
-
-  // const nodesAreDifferent = (oldNode, newNode) => {
-  //   return oldVNode.tag !== newVNode.tag
-  // }
 
   const oldLength = oldVNode.children.length
   const newLength = newVNode.children.length
 
   for (let i = 0; i < newLength || i < oldLength; i++) {
-    areNodesDifferent(
+    difftingDOM(
       parentNode.childNodes[index],
       oldVNode.children[i],
       newVNode.children[i],
@@ -57,12 +84,13 @@ const areNodesDifferent = (parentNode, oldVNode, newVNode, index = 0) => {
     )
   }
 }
+
 const createRootNode = (vNode, targetNode) => {
   let currentHTML = null;
   return {
-    update: (state = {}) => {
+    render: (state = {}) => {
       const newHtml = vNode(state)
-      areNodesDifferent(targetNode, currentHTML, newHtml)
+      difftingDOM(targetNode, currentHTML, newHtml)
       currentHTML = newHtml
     }
   }

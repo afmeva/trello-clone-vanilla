@@ -78,7 +78,7 @@ const createModel = reducers => {
 
 const rootApp = (view, model) => {
   rootNode = createRootNode(view, document.querySelector('.app'))
-  model.onChange(rootNode.update)
+  model.onChange(rootNode.render)
 
   model.do({
     type: '@@INIT'
