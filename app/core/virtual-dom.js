@@ -48,7 +48,7 @@ const areAttrsDifferent = (oldVNode, newVNode) => {
   return areDifferent
 }
 
-const areNodesDifferent = () => {
+const areNodesDifferent = (oldVNode, newVNode) => {
   return (oldVNode.tag !== newVNode.tag) ||
     (oldVNode.text !== newVNode.text)
 }
@@ -64,7 +64,7 @@ const difftingDOM = (parentNode, oldVNode, newVNode, index = 0) => {
     return;
   }
 
-  if (areNodesDifferent(oldNode, newNode) ||
+  if (areNodesDifferent(oldVNode, newVNode) ||
     areAttrsDifferent(oldVNode, newVNode)) {
     parentNode.replaceChild(
       createElement(newVNode),
