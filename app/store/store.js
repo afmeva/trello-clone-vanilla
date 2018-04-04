@@ -1,6 +1,6 @@
 import createModel from '../core/model'
 import reducers from '../reducers/reducers'
 
-const model = createModel(reducers)
+const store = createModel(reducers)
 
-export default model
+export default store

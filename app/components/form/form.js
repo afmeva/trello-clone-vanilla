@@ -8,7 +8,7 @@ export default (state = {}) => {
     input({
       value: store.getState().value,
       onchange({ target }) {
-        store.do({
+        store.dispatch({
           type: 'UPDATE_VALUE',
           value: Number(target.value) + 1
         })
@@ -17,7 +17,7 @@ export default (state = {}) => {
     div('my current number:' + store.getState().value),
     button({
       onclick() {
-        store.do({
+        store.dispatch({
           type: 'UPDATE_VALUE',
           value: store.getState().value + 1
         })

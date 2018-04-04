@@ -85,7 +85,7 @@ const difftingDOM = (parentNode, oldVNode, newVNode, index = 0) => {
   }
 }
 
-const createRootNode = (vNode, targetNode) => {
+const createApp = (vNode, targetNode) => {
   let currentHTML = null;
   return {
     render: (state = {}) => {
@@ -126,5 +126,5 @@ const input = createVirtualElement('input')
 const button = createVirtualElement('button')
 const h1 = createVirtualElement('h1')
 
-export { div, p, input, button, h1, createRootNode }
+export { div, p, input, button, h1, createApp }
 

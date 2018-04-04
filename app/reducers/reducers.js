@@ -1,4 +1,6 @@
-const reducers = {
+import { composeReducers } from '../core/model'
+
+const obj = {
   title: (action, state = 'default title') => {
     return state
   },
@@ -12,5 +14,5 @@ const reducers = {
   }
 }
 
-export default reducers
+export default composeReducers(obj)
 
