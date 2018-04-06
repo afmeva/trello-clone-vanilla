@@ -34,8 +34,8 @@ const areAttrsDifferent = (oldVNode, newVNode) => {
     const [oAttr, oAttrValue] = oAttrsArray[i]
     const [nAttr, nAttrValue] = nAttrsArray[i]
 
-    // this need further testing. Could callback change in runtime?
-    if ((typeof oAttrValue === 'function') && (typeof oAttrValue === 'function')) {
+    // this needs further testing. Could callback change in runtime?
+    if ((typeof oAttrValue === 'function') && (typeof nAttrValue === 'function')) {
       continue
     }
 
@@ -85,12 +85,12 @@ const difftingDOM = (parentNode, oldVNode, newVNode, index = 0) => {
   }
 }
 
-const createApp = (vNode, targetNode) => {
+const createApp = ({ view, store, rootNode }) => {
   let currentHTML = null;
   return {
     render: (state = {}) => {
-      const newHtml = vNode(state)
-      difftingDOM(targetNode, currentHTML, newHtml)
+      const newHtml = view(store)
+      difftingDOM(rootNode, currentHTML, newHtml)
       currentHTML = newHtml
     }
   }

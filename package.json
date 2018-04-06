@@ -26,7 +26,8 @@
     "broccoli-livereload": "^1.2.1",
     "broccoli-merge-trees": "^3.0.0",
     "broccoli-rollup": "^2.0.0",
-    "broccoli-sass": "^0.7.0"
+    "broccoli-sass": "^0.7.0",
+    "rollup-plugin-alias": "^1.4.0"
   },
   "dependencies": {}
 }

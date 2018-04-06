@@ -1,10 +1,13 @@
-import { createModel } from './core/model'
-import { createApp } from './core/virtual-dom'
+import { createApp } from '_core/virtual-dom'
 
-import form from './components/form/form'
+import view from '_components/form/form'
+// import createStore from './store/store'
 import store from './store/store'
 
-const app = createApp(form, document.querySelector('.app'))
-app.render(store.getState())
-
+const app = createApp({
+  store,
+  view,
+  rootNode: document.querySelector('.app')
+})
+app.render()
 store.onChange(app.render)

@@ -19,6 +19,7 @@ const createModel = reducer => {
 
   return { getState, dispatch, onChange }
 }
+
 const composeReducers = obj => (state, action) => {
   const newState = {}
   Object.entries(obj).forEach(([key, reducer]) => {
@@ -27,6 +28,4 @@ const composeReducers = obj => (state, action) => {
   return newState
 }
 
-export { composeReducers }
-
-export default createModel
+export { composeReducers, createModel }

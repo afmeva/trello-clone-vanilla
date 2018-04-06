@@ -1,5 +1,5 @@
-import createModel from '../core/model'
-import reducers from '../reducers/reducers'
+import { createModel } from '_core/model'
+import reducers from '_reducers/reducers'
 
 const store = createModel(reducers)
 

@@ -1,4 +1,4 @@
-import { composeReducers } from '../core/model'
+import { composeReducers } from '_core/model'
 
 const obj = {
   title: (action, state = 'default title') => {

@@ -1,9 +1,7 @@
-import { div, p, input, button } from '../../core/virtual-dom'
+import { div, p, input, button } from '_core/virtual-dom'
 
-import store from '../../store/store'
-
-export default (state = {}) => {
-  const { title, value = 0 } = state
+const form = (store) => {
+  const { title, value = 0 } = store.getState()
   return div({ className: 'myDiv' },
     input({
       value: store.getState().value,
@@ -25,3 +23,5 @@ export default (state = {}) => {
     }, 'Click me')
   )
 }
+
+export default form

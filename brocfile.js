@@ -5,13 +5,26 @@ const html = funnel('app', {
 })
 
 const Rollup = require('broccoli-rollup')
+const alias = require('rollup-plugin-alias')
+const path = require('path');
+const rootPath = process.cwd()
+//paths
+const _core = path.resolve(rootPath, 'app/core');
+const _components = path.resolve(rootPath, 'app/components');
+const _reducers = path.resolve(rootPath, 'app/reducers');
+
 let js = new Rollup('app', {
   rollup: {
     input: 'app.js',
     output: {
       file: 'app.js',
       format: 'es',
-    }
+    },
+    plugins: [alias({
+      _core,
+      _components,
+      _reducers
+    })],
   }
 })
 
