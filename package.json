@@ -28,5 +28,7 @@
     "broccoli-rollup": "^2.0.0",
     "broccoli-sass": "^0.7.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "firebase": "^4.12.1"
+  }
 }
