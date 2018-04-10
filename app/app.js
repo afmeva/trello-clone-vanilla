@@ -1,5 +1,4 @@
-import firebase from 'firebase'
-
+import '_core/firebase.config'
 import { createApp } from '_core/virtual-dom'
 
 import view from '_components/form/form'
@@ -12,15 +11,3 @@ const app = createApp({
 })
 app.render()
 store.onChange(app.render)
-
-firebase.initializeApp({
-  apiKey: "AIzaSyD15J0oSJXODzVRPtQcHvtTLF78HNNFLGM",
-  authDomain: "trello-clone-30eb4.firebaseapp.com",
-  databaseURL: "https://trello-clone-30eb4.firebaseio.com",
-  projectId: "trello-clone-30eb4",
-  storageBucket: "trello-clone-30eb4.appspot.com",
-  messagingSenderId: "411006033442"
-});
-
-
-
