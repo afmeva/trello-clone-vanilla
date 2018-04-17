@@ -1,4 +1,5 @@
 import { div, p, input, button } from '_core/virtual-dom'
+import withStore from '_store/withStore'
 
 const form = (store) => {
   const { title, value = 0 } = store.getState()
@@ -24,4 +25,4 @@ const form = (store) => {
   )
 }
 
-export default form
+export default withStore(form)
