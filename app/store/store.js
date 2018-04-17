@@ -1,6 +1,5 @@
-import { createModel } from '_core/model'
-import reducers from '_reducers/reducers'
+import setStore from './store.config'
 
-const store = createModel(reducers)
+const store = setStore()
 
 export default store
