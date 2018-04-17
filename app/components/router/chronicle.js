@@ -4,10 +4,10 @@ import withStore from '_store/withStore'
 const { location } = window;
 const listeners = []
 
-const updateRouterState = () => {
+const updateRouterState = withStore((store) => {
   const { hash } = location
   store.dispatch({ type: 'URL_CHANGED', payload: hash })
-}
+})
 
 window.addEventListener('hashchange', withStore((e, store) => {
   updateRouterState()
