@@ -11,6 +11,15 @@ const obj = {
       default:
         return state
     }
+  },
+  router: (action, state) => {
+    console.log(action, state)
+    switch (action.type) {
+      case 'URL_CHANGED':
+        console.log('url linda cmabiando')
+        return state
+    }
+    return state
   }
 }
 
