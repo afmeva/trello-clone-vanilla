@@ -85,11 +85,11 @@ const difftingDOM = (parentNode, oldVNode, newVNode, index = 0) => {
   }
 }
 
-const createApp = ({ view, store, rootNode }) => {
+const createApp = ({ view, rootNode }) => {
   let currentHTML = null;
   return {
     render: (state = {}) => {
-      const newHtml = view(store)
+      const newHtml = view()
       difftingDOM(rootNode, currentHTML, newHtml)
       currentHTML = newHtml
     }
