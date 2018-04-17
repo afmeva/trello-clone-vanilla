@@ -1,3 +1,4 @@
+import routerReducer from '_components/router/reducer'
 import { composeReducers } from '_core/model'
 
 const obj = {
@@ -12,15 +13,7 @@ const obj = {
         return state
     }
   },
-  router: (action, state) => {
-    console.log(action, state)
-    switch (action.type) {
-      case 'URL_CHANGED':
-        console.log('url linda cmabiando')
-        return state
-    }
-    return state
-  }
+  router: routerReducer
 }
 
 export default composeReducers(obj)
