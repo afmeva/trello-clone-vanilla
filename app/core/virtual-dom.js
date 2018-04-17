@@ -22,14 +22,16 @@ const createElement = (vNode) => {
 
 const areAttrsDifferent = (oldVNode, newVNode) => {
   let areDifferent = false;
-  if (oldVNode.attrs.length !== newVNode.attrs.length) {
-    areDifferent = true
-  }
 
   const oAttrsArray = Object.entries(oldVNode.attrs)
   const nAttrsArray = Object.entries(newVNode.attrs)
   const oldLength = oAttrsArray.length
   const newLength = nAttrsArray.length
+
+  if (oldLength !== newLength) {
+    return true
+  }
+
   for (let i = 0; i < newLength || i < oldLength; i++) {
     const [oAttr, oAttrValue] = oAttrsArray[i]
     const [nAttr, nAttrValue] = nAttrsArray[i]
