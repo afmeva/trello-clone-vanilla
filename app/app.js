@@ -1,11 +1,32 @@
 import '_core/firebase.config'
 import { createApp } from '_core/virtual-dom'
+import { div, p, input, button } from '_core/virtual-dom'
+import { router, anchor, route } from '_components/router/router'
+import form from '_components/form/form'
+import withStore from '_store/withStore'
+import store from '_store/store'
 
-import view from '_components/form/form'
-import store from './store/store'
+
+const view = () => {
+  return router(
+    route({
+      route: 'about.html',
+      component: form
+    }),
+    route({
+      route: 'index.html',
+      component: div({},
+        div({}, 'Hello meet the index!'),
+        anchor({
+          route: 'about.html',
+          text: 'I am a fucking link'
+        })
+      )
+    })
+  )
+}
 
 const app = createApp({
-  store,
   view,
   rootNode: document.querySelector('.app')
 })
