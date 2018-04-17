@@ -2,14 +2,7 @@ import { div } from '_core/virtual-dom'
 import withStore from '_store/withStore'
 import chronicle from './chronicle';
 
-chronicle.onChange(chState => {
-  console.log(chState)
-})
-
-// this is temporal. 
-// server has to be configured for SPA capabilities 
-const URL_ROOT = 'index.html#'
-
+const URL_ROOT = '#'
 const routes = {}
 
 const anchor = ({ route, text }) => {
@@ -21,18 +14,22 @@ const anchor = ({ route, text }) => {
 }
 
 const route = ({ route, component }) => {
-  routes[route] = component
+  routes[`${URL_ROOT}${route}`] = component
+  return component
 }
 
-const router = (children) => {
-  const route = 'about.html'
+const router = withStore((...args) => {
+  const store = args.pop().getState() // store is always last argument
+  const children = args
+
+  const route = store.router.currentPath
   const component = routes[route]
 
   return component
     ? typeof component === 'function'
       ? component()
       : component
-    : routes['index.html']
-}
+    : routes['#index.html']
+})
 
 export { anchor, router, route }
