@@ -1,9 +1,8 @@
 import '_core/firebase.config'
 import { createApp } from '_core/virtual-dom'
-import { div, p, input, button } from '_core/virtual-dom'
+import { div } from '_core/virtual-dom'
 import { router, anchor, route } from '_components/router/router'
 import form from '_components/form/form'
-import withStore from '_store/withStore'
 import store from '_store/store'
 
 

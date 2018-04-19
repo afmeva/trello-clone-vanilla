@@ -3,6 +3,7 @@ import withStore from '_store/withStore'
 import chronicle from './chronicle';
 
 const URL_ROOT = '#'
+const DEFAULT_ROUTE = '#index.html'
 const routes = {}
 
 const anchor = ({ route, text }) => {
@@ -19,17 +20,18 @@ const route = ({ route, component }) => {
 }
 
 const router = withStore((...args) => {
-  const store = args.pop().getState() // store is always last argument
+  // store is always last argument
+  const state = args.pop().getState()
   const children = args
 
-  const route = store.router.currentPath
+  const route = state.router.currentPath
   const component = routes[route]
 
   return component
     ? typeof component === 'function'
       ? component()
       : component
-    : routes['#index.html']
+    : routes[DEFAULT_ROUTE]
 })
 
 export { anchor, router, route }
