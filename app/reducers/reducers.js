@@ -1,4 +1,5 @@
 import routerReducer from '_components/router/reducer'
+import newBoardReducer from '_components/new-board/reducer'
 import { composeReducers } from '_core/model'
 
 const obj = {
@@ -13,7 +14,8 @@ const obj = {
         return state
     }
   },
-  router: routerReducer
+  router: routerReducer,
+  navigational: newBoardReducer
 }
 
 export default composeReducers(obj)
