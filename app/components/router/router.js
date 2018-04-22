@@ -6,7 +6,7 @@ const URL_ROOT = '#'
 const DEFAULT_ROUTE = '#index.html'
 const routes = {}
 
-const anchor = ({ route, text }) => {
+const link = ({ route, text }) => {
   return div({
     onclick() {
       chronicle.pushState(`${URL_ROOT}${route}`)
@@ -34,4 +34,4 @@ const router = injectStore((...args) => {
     : routes[DEFAULT_ROUTE]
 })
 
-export { anchor, router, route }
+export { link, router, route }
