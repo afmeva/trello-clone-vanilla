@@ -1,5 +1,5 @@
 import { div, p, input, button } from '_core/virtual-dom'
-import withStore from '_store/withStore'
+import injectStore from '_store/inject-store'
 
 const form = (store) => {
   const { title, value = 0 } = store.getState()
@@ -25,4 +25,4 @@ const form = (store) => {
   )
 }
 
-export default withStore(form)
+export default injectStore(form)
