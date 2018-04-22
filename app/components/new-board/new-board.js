@@ -1,8 +1,8 @@
-import { div, p, input, button } from '_core/virtual-dom'
+import { div, empty, button } from '_core/virtual-dom'
 import withStore from '_store/withStore'
 import ifCond from '_components/conditionalRender/index'
 
-export default withStore((store) => {
+const newBoard = (store) => {
   const { navigational } = store.getState()
 
   return div({ className: 'new-board' },
@@ -16,6 +16,9 @@ export default withStore((store) => {
     },
       'Create a new board...'
     ),
-    ifCond(navigational.isCreateBoardVisible, div('pop up'), null)
+    ifCond(navigational.isCreateBoardVisible, div('pop up'), empty())
   )
-})
+}
+
+export default withStore(newBoard)
+
