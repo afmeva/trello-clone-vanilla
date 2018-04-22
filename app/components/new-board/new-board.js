@@ -1,5 +1,5 @@
 import { div, empty, button } from '_core/virtual-dom'
-import withStore from '_store/withStore'
+import injectStore from '_store/inject-store'
 import ifCond from '_components/conditionalRender/index'
 
 const newBoard = (store) => {
@@ -20,5 +20,5 @@ const newBoard = (store) => {
   )
 }
 
-export default withStore(newBoard)
+export default injectStore(newBoard)
 
