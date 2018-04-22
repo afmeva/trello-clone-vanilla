@@ -1,6 +1,6 @@
 import injectStore from '_store/inject-store'
 
-// no needed, just for being explicit
+// not needed, just for being explicit
 const { location } = window;
 
 const updateRouterState = injectStore((store) => {
