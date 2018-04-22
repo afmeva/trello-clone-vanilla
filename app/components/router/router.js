@@ -1,12 +1,12 @@
 import { div } from '_core/virtual-dom'
-import withStore from '_store/withStore'
+import injectStore from '_store/inject-store'
 import chronicle from './chronicle';
 
 const URL_ROOT = '#'
 const DEFAULT_ROUTE = '#index.html'
 const routes = {}
 
-const anchor = ({ route, text }) => {
+const link = ({ route, text }) => {
   return div({
     onclick() {
       chronicle.pushState(`${URL_ROOT}${route}`)
@@ -19,7 +19,7 @@ const route = ({ route, component }) => {
   return component
 }
 
-const router = withStore((...args) => {
+const router = injectStore((...args) => {
   // store is always last argument
   const state = args.pop().getState()
   const children = args
@@ -34,4 +34,4 @@ const router = withStore((...args) => {
     : routes[DEFAULT_ROUTE]
 })
 
-export { anchor, router, route }
+export { link, router, route }
