@@ -1,3 +1,4 @@
+import routerReducer from '_components/router/reducer'
 import { composeReducers } from '_core/model'
 
 const obj = {
@@ -11,7 +12,8 @@ const obj = {
       default:
         return state
     }
-  }
+  },
+  router: routerReducer
 }
 
 export default composeReducers(obj)

@@ -12,6 +12,7 @@ const rootPath = process.cwd()
 const _core = path.resolve(rootPath, 'app/core');
 const _components = path.resolve(rootPath, 'app/components');
 const _reducers = path.resolve(rootPath, 'app/reducers');
+const _store = path.resolve(rootPath, 'app/store');
 
 let js = new Rollup('app', {
   rollup: {
@@ -32,6 +33,7 @@ let js = new Rollup('app', {
         _core,
         _components,
         _reducers,
+        _store
       })
     ],
   }

@@ -20,7 +20,7 @@ const createModel = reducer => {
   return { getState, dispatch, onChange }
 }
 
-const composeReducers = obj => (state, action) => {
+const composeReducers = obj => (action, state) => {
   const newState = {}
   Object.entries(obj).forEach(([key, reducer]) => {
     newState[key] = reducer(action, state[key])
