@@ -56,6 +56,8 @@ const areNodesDifferent = (oldVNode, newVNode) => {
 }
 
 const difftingDOM = (parentNode, oldVNode, newVNode, index = 0) => {
+  if (!oldVNode && !newVNode) { return }
+  
   if (!oldVNode) {
     parentNode.appendChild(createElement(newVNode))
     return;
@@ -126,8 +128,7 @@ const div = createVirtualElement('div')
 const p = createVirtualElement('p')
 const input = createVirtualElement('input')
 const button = createVirtualElement('button')
-const a = createVirtualElement('a')
 const empty = () => { }
 
-export { div, empty, p, input, button, a, createApp }
+export { div, empty, p, input, button, createApp }
 
