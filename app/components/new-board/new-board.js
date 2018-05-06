@@ -15,8 +15,7 @@ const newBoard = (store) => {
       }
     },
       'Create a new board...'
-    ),
-    ifCond(navigational.isCreateBoardVisible, div('pop up'), empty())
+    )
   )
 }
 

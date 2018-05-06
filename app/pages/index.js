@@ -1,7 +1,9 @@
 import { div, p } from '_core/virtual-dom'
 import newBoardBtn from '_components/new-board/new-board'
+import newBoardPopup from '_components/new-board-popup/new-board-popup'
 import boardBtn from '_components/board-btn/board-btn'
 import injectStore from '_store/inject-store'
+
 
 const boards = [
     {
@@ -29,5 +31,6 @@ export default injectStore((state) => {
       ...createBoards(boards),
       newBoardBtn(),
     ),
+    newBoardPopup()
   )
 })
