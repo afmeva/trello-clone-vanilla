@@ -1,4 +1,4 @@
-import { div } from '_core/virtual-dom'
+import { a } from '_core/virtual-dom'
 import injectStore from '_store/inject-store'
 import chronicle from './chronicle';
 
@@ -6,12 +6,12 @@ const URL_ROOT = '#'
 const DEFAULT_ROUTE = '#index.html'
 const routes = {}
 
-const link = ({ route, text }) => {
-  return div({
+const link = ({ route, content }) => {
+  return a({
     onclick() {
       chronicle.pushState(`${URL_ROOT}${route}`)
     }
-  }, text)
+  }, content)
 }
 
 const route = ({ route, component }) => {

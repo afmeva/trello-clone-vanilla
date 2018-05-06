@@ -126,8 +126,8 @@ const div = createVirtualElement('div')
 const p = createVirtualElement('p')
 const input = createVirtualElement('input')
 const button = createVirtualElement('button')
-const h1 = createVirtualElement('h1')
+const a = createVirtualElement('a')
 const empty = () => { }
 
-export { div, empty, p, input, button, h1, createApp }
+export { div, empty, p, input, button, a, createApp }
 
