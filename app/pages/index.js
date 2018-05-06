@@ -19,8 +19,6 @@ const createBoards = (boards = []) => {
 }
 
 export default injectStore((state) => {
-  console.log(state.getState());
-  
   return div({
       className: 'index-page'
     },
