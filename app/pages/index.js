@@ -1,10 +1,35 @@
-import { div, p, input, button } from '_core/virtual-dom'
+import { div, p } from '_core/virtual-dom'
 import newBoardBtn from '_components/new-board/new-board'
+import boardBtn from '_components/board-btn/board-btn'
+import injectStore from '_store/inject-store'
 
-export default () => {
+const boards = [
+    {
+    name: 'tablero1',
+    url: 'tablero1'
+  },
+  {
+    name: 'tablero2',
+    url: 'tablero2'
+  }
+]
+
+const createBoards = (boards = []) => {
+  return boards.map(board => boardBtn(board))
+}
+
+export default injectStore((state) => {
+  console.log(state.getState());
+  
   return div({
       className: 'index-page'
     },
-    newBoardBtn(),
+    p('Tableros Personales'),
+    div({
+        className: 'index-page__boards'
+      },
+      ...createBoards(boards),
+      newBoardBtn(),
+    ),
   )
-}
+})
