@@ -4,23 +4,13 @@ import newBoardPopup from '_components/new-board-popup/new-board-popup'
 import boardBtn from '_components/board-btn/board-btn'
 import injectStore from '_store/inject-store'
 
-
-const boards = [
-    {
-    name: 'tablero1',
-    url: 'tablero1'
-  },
-  {
-    name: 'tablero2',
-    url: 'tablero2'
-  }
-]
-
 const createBoards = (boards = []) => {
   return boards.map(board => boardBtn(board))
 }
 
-export default injectStore((state) => {
+export default injectStore((store) => {
+  const state = store.getState()
+  const { newBoardsPopup: { boards }} = state;
   return div({
       className: 'index-page'
     },

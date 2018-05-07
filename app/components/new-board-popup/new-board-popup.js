@@ -7,7 +7,14 @@ export default injectStore((store) => {
 
   if (isCreateBoardVisible) {
     return div({
-        className: 'new-board-popup'
+        className: 'new-board-popup',
+        onclick({ target }) {
+          if (target.classList.contains('new-board-popup')) {
+            store.dispatch({
+              type: 'HIDE_CREATE_BOARD_POPUP'
+            })
+          }
+        }
       },
       div({
           className: 'new-board-popup__box'
@@ -17,12 +24,14 @@ export default injectStore((store) => {
           onchange({ target: { value } }) {
             store.dispatch({
               type: 'UPDATE_NEWBOARD_POPUP_VALUE',
-              value
+              payload: value
             })
           }
         }),
         button({
           onclick() {
+            if (!store.getState().newBoardsPopup.value) { return }
+            
             store.dispatch({
               type: 'CREATE_NEWBOARD'
             })
