@@ -64,7 +64,7 @@ const difftingDOM = (parentNode, oldVNode, newVNode, index = 0) => {
   }
 
   if (!newVNode) {
-    parentNode.removeChild(createElement(newVNode))
+    parentNode.removeChild(parentNode.children[index])
     return;
   }
 
