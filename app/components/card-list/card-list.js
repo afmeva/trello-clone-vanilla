@@ -16,6 +16,9 @@ const cardList = (store) => {
            */
           console.log(e)
           console.log(store.getState());
+          store.dispatch({
+            type: 'ADD_NEW_CARD'
+          })
         }
       }, 'Add')
     )
