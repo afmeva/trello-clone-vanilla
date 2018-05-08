@@ -1,6 +1,8 @@
 import routerReducer from '_components/router/reducer'
 import newBoardReducer from '_components/new-board/reducer'
 import { composeReducers } from '_core/model'
+import cardReducer from '_components/card/reducer'
+import cardListReducer from '_components/card-list/reducer'
 
 const obj = {
   title: (action, state = 'default title') => {
@@ -15,7 +17,9 @@ const obj = {
     }
   },
   router: routerReducer,
-  navigational: newBoardReducer
+  navigational: newBoardReducer,
+  card: cardReducer,
+  cardList: cardListReducer
 }
 
 export default composeReducers(obj)
