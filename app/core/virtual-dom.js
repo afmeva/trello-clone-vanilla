@@ -56,13 +56,15 @@ const areNodesDifferent = (oldVNode, newVNode) => {
 }
 
 const difftingDOM = (parentNode, oldVNode, newVNode, index = 0) => {
+  if (!oldVNode && !newVNode) { return }
+  
   if (!oldVNode) {
     parentNode.appendChild(createElement(newVNode))
     return;
   }
 
   if (!newVNode) {
-    parentNode.removeChild(createElement(newVNode))
+    parentNode.removeChild(parentNode.children[index])
     return;
   }
 
@@ -127,7 +129,9 @@ const p = createVirtualElement('p')
 const input = createVirtualElement('input')
 const button = createVirtualElement('button')
 const h1 = createVirtualElement('h1')
+const h4 = createVirtualElement('h4')
+const textArea = createVirtualElement('textArea')
 const empty = () => { }
 
-export { div, empty, p, input, button, h1, createApp }
+export { div, empty, p, input, button, h1, h4, textArea, createApp }
 
