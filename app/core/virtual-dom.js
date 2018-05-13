@@ -56,13 +56,15 @@ const areNodesDifferent = (oldVNode, newVNode) => {
 }
 
 const difftingDOM = (parentNode, oldVNode, newVNode, index = 0) => {
+  if (!oldVNode && !newVNode) { return }
+  
   if (!oldVNode) {
     parentNode.appendChild(createElement(newVNode))
     return;
   }
 
   if (!newVNode) {
-    parentNode.removeChild(createElement(newVNode))
+    parentNode.removeChild(parentNode.children[index])
     return;
   }
 
