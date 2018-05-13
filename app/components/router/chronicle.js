@@ -16,5 +16,6 @@ const pushState = injectStore((route, store) => {
 window.addEventListener('hashchange', injectStore((e, store) => {
   updateRouterState()
 }))
+updateRouterState()
 
 export default { pushState }
