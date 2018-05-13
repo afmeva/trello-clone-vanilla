@@ -12,10 +12,6 @@ const cardList = (store) => {
     button({
       className: 'list__add-button',
       onclick(e) {
-        /* create an uneditable card with the 
-         * value of list__card-text
-         * create new textarea 
-         */
         store.dispatch({
           type: 'ADD_NEW_CARD',
           payload: 'new card placeholder' //TODO: this should be a card
