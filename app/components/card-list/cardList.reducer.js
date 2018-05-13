@@ -6,8 +6,7 @@ export default (action, state = { listLabel: '', cards: ['editable card'] }) => 
             return Object.assign({}, state, {
                 cards: [...state.cards, newCardObj]
             })
-        case 'CHANGE_LABEL':
-            listLabel = action.payload
     }
+    
     return state
 }
