@@ -2,14 +2,19 @@ import '_core/firebase.config'
 import { createApp } from '_core/virtual-dom'
 import { div } from '_core/virtual-dom'
 import { router, route } from '_components/router/router'
-import index from '_pages/index/index'
+import indexPage from '_pages/index/index'
+import boardPage from '_pages/board/board'
 import store from '_store/store'
 
 const view = () => {
   return router(
     route({
       route: 'index.html',
-      component: index()
+      component: indexPage()
+    }),
+    route({
+      route: 'board/:boardId',
+      component: boardPage()
     })
   )
 }
