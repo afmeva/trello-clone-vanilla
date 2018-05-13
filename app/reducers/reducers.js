@@ -1,5 +1,6 @@
 import routerReducer from '_components/router/reducer'
 import newBoardReducer from '_components/new-board/reducer'
+import newBoardsPopupReducer from '_components/new-board-popup/new-board-popup-reducer'
 import { composeReducers } from '_core/model'
 
 const obj = {
@@ -15,7 +16,8 @@ const obj = {
     }
   },
   router: routerReducer,
-  navigational: newBoardReducer
+  navigational: newBoardReducer,
+  newBoardsPopup: newBoardsPopupReducer
 }
 
 export default composeReducers(obj)

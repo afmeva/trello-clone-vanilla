@@ -1,6 +1,6 @@
 import { div, empty, button } from '_core/virtual-dom'
 import injectStore from '_store/inject-store'
-import ifCond from '_components/conditionalRender/index'
+import ifCond from '_components/conditional-render/index'
 
 const newBoard = (store) => {
   const { navigational } = store.getState()
@@ -15,8 +15,7 @@ const newBoard = (store) => {
       }
     },
       'Create a new board...'
-    ),
-    ifCond(navigational.isCreateBoardVisible, div('pop up'), empty())
+    )
   )
 }
 

@@ -6,12 +6,13 @@ const URL_ROOT = '#'
 const DEFAULT_ROUTE = '#index.html'
 const routes = {}
 
-const link = ({ route, text }) => {
+const link = (attrs = {}, { route, content }) => {
   return div({
+    ...attrs,
     onclick() {
       chronicle.pushState(`${URL_ROOT}${route}`)
     }
-  }, text)
+  }, content)
 }
 
 const route = ({ route, component }) => {

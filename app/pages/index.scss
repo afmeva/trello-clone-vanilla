@@ -1,0 +1,11 @@
+.index-page {
+  width: 900px;
+  margin: 0 auto;
+
+  &__boards {
+    display: grid;
+    grid-auto-columns: 200px;
+    grid-auto-flow: column;
+    grid-gap: 10px
+  }
+}
