@@ -16,10 +16,9 @@ const cardList = (store) => {
          * value of list__card-text
          * create new textarea 
          */
-        console.log('clickEvent', e)
         store.dispatch({
           type: 'ADD_NEW_CARD',
-          payload: 'new card placeholder'
+          payload: 'new card placeholder' //TODO: this should be a card
         })
       }
     }, 'Add')
