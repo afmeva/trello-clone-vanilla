@@ -3,17 +3,21 @@ const html = funnel('app', {
   files: ['index.html'],
   destDir: '/'
 })
+const eslint = require('broccoli-lint-eslint')
+//let lintedJs = eslint(js, {})
 
 const Rollup = require('broccoli-rollup')
 const alias = require('rollup-plugin-alias')
 //paths
-const path = require('path');
+const path = require('path')
 const rootPath = process.cwd()
-const _core = path.resolve(rootPath, 'app/core');
-const _components = path.resolve(rootPath, 'app/components');
-const _reducers = path.resolve(rootPath, 'app/reducers');
-const _store = path.resolve(rootPath, 'app/store');
-const _pages = path.resolve(rootPath, 'app/pages');
+const _core = path.resolve(rootPath, 'app/core')
+const _components = path.resolve(rootPath, 'app/components')
+const _reducers = path.resolve(rootPath, 'app/reducers')
+const _store = path.resolve(rootPath, 'app/store')
+const _pages = path.resolve(rootPath, 'app/pages')
+
+
 
 let js = new Rollup('app', {
   rollup: {
@@ -49,7 +53,7 @@ const css = compileSass(
 )
 
 const mergeTrees = require('broccoli-merge-trees')
-const tree = mergeTrees([html, js, css])
+const tree = mergeTrees([html, eslint(js, {}), css])
 
 const LiveReload = require('broccoli-livereload')
 const isAlive = new LiveReload(tree, {
