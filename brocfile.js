@@ -4,8 +4,6 @@ const html = funnel('app', {
   destDir: '/'
 })
 const eslint = require('broccoli-lint-eslint')
-//let lintedJs = eslint(js, {})
-
 const Rollup = require('broccoli-rollup')
 const alias = require('rollup-plugin-alias')
 //paths
