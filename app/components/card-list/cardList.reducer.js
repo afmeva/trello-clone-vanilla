@@ -1,4 +1,4 @@
-export default (action, state = { listLabel: '', cards: ['editable card'] }) => {
+export default (action, state = { listLabel: '', cards: [{ isEditable:true, value:'' }] }) => {
 
     switch (action.type) {
         case 'ADD_NEW_CARD':

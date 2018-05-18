@@ -1,5 +1,6 @@
 import { div, button, h4 } from '_core/virtual-dom'
 import injectStore from '_store/inject-store'
+import card from '_components/card/card'
 
 const cardList = (store) => {
   
@@ -14,7 +15,7 @@ const cardList = (store) => {
       onclick(e) {
         store.dispatch({
           type: 'ADD_NEW_CARD',
-          payload: 'new card placeholder' //TODO: this should be a card
+          payload: {isEditable: true, value: ''}
         })
       }
     }, 'Add')
@@ -22,7 +23,7 @@ const cardList = (store) => {
 }
 
 const createCards = (cards = []) => {
-  return cards.map(card => div(card))
+  return cards.map(cardObj => card(cardObj))
 }
 
 export default injectStore(cardList)
