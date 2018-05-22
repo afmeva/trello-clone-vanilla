@@ -3,19 +3,23 @@ const html = funnel('app', {
   files: ['index.html'],
   destDir: '/'
 })
-
+const Eslint = require('broccoli-lint-eslint')
 const Rollup = require('broccoli-rollup')
 const alias = require('rollup-plugin-alias')
 //paths
-const path = require('path');
+const path = require('path')
 const rootPath = process.cwd()
-const _core = path.resolve(rootPath, 'app/core');
-const _components = path.resolve(rootPath, 'app/components');
-const _reducers = path.resolve(rootPath, 'app/reducers');
-const _store = path.resolve(rootPath, 'app/store');
-const _pages = path.resolve(rootPath, 'app/pages');
+const _core = path.resolve(rootPath, 'app/core')
+const _components = path.resolve(rootPath, 'app/components')
+const _reducers = path.resolve(rootPath, 'app/reducers')
+const _store = path.resolve(rootPath, 'app/store')
+const _pages = path.resolve(rootPath, 'app/pages')
 
-let js = new Rollup('app', {
+let js = new Eslint('app', {
+  persist: true
+})
+
+js = new Rollup(js, {
   rollup: {
     input: 'app.js',
     output: {
