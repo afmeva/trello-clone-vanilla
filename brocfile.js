@@ -15,7 +15,9 @@ const _reducers = path.resolve(rootPath, 'app/reducers')
 const _store = path.resolve(rootPath, 'app/store')
 const _pages = path.resolve(rootPath, 'app/pages')
 
-let js = new Eslint('app', {persist: true})
+let js = new Eslint('app', {
+  persist: true
+})
 
 js = new Rollup(js, {
   rollup: {
