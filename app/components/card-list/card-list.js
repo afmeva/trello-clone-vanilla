@@ -4,8 +4,9 @@ import {uneditableCard, editableCard} from '_components/card/card'
 
 const cardList = (store) => {
   return div({ className: 'list' },
-    div({ className: 'list__cards' }),
+    div({ className: 'list__cards' },
       ...createCards(store),
+    ),
     button({
       className: 'list__add-button',
       onclick(e) {
