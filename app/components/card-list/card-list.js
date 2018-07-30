@@ -5,7 +5,6 @@ import ifCond from '_components/conditionalRender/index'
 
 const cardList = (store) => {
   const {  cardList: { hasEditable } } = store.getState()
-  console.log('haseditable', hasEditable)
   return div({ className: 'list' },
     div({ className: 'list__cards' },
       ...createCards(store),
