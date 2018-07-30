@@ -1,9 +1,9 @@
 import injectStore from '_store/inject-store'
-import { div, textArea, p } from '_core/virtual-dom'
+import { div, textArea, p, button } from '_core/virtual-dom'
 
 export const uneditableCard = (card) => {
   return div({
-    className: 'card__card--uneditable'
+    className: 'card__card card__card--uneditable'
   },
     div({
       className: 'card__card-info'
@@ -14,9 +14,9 @@ export const uneditableCard = (card) => {
 }
 
 export const editableCard = (store) => {
-  return div({ className: 'card__card--editable' },
+  return div({ className: 'card__card card__card--editable' },
     textArea({
-      className: 'card__card--editable',
+      className: 'card__card-input',
       value: store.getState().value,
       onchange({ target }) {
         store.dispatch({
